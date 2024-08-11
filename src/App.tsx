@@ -7,9 +7,9 @@ import AppRoutes from './configs/AppRoutes'
 const App = () => {
   return (
     <Router>
-      <div className='flex flex-col min-h-screen'>
+      <div className='flex flex-col min-h-screen w-screen'>
         <Navbar></Navbar>
-        <main className='flex-grow'>
+        <main className='flex-grow mt-12'>
           <AppRoutes></AppRoutes>
         </main>
       </div>

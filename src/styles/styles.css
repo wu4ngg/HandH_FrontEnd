@@ -1,3 +1,35 @@
 .text-title-nav {
     color: #484848;
 }
+
+.text-color-primary {
+    color: #000;
+}
+
+.text-button-primary {
+    background-color: #FFECC4
+}
+
+.bg-button-primary {
+    background-color: #FFECC4
+}
+
+.bg-primary-grey {
+    background-color: #DDDDDD
+}
+
+.bg-search-field {
+    background-color: #ECECEC;
+}
+
+.bg-select-grey {
+    color: #F9F9F9
+}
+
+.transition-ease-in-out {
+    transition: all 0.35s ease-in-out;   
+}
+
+.transition-ease-in-ou:hover {
+    transition: all 0.35s ease-in-out;   
+}
