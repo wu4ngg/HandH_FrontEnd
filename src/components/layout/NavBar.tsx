@@ -12,6 +12,7 @@ import boxCategory from "../widget/boxCategory.widget";
 import { duration } from "@mui/material";
 
 const Navbar: React.FC = () => {
+
   const [showCate, setShowCate] = React.useState(false);
   const transitions = useTransition(showCate, {
     from: { y: -16, opacity: 0, backgroundColor: "rgba(0, 0, 0, 0)" },
