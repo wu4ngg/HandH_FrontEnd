@@ -33,3 +33,17 @@
 .transition-ease-in-ou:hover {
     transition: all 0.35s ease-in-out;   
 }
+
+.popup-content {
+    background-color: white;
+    width: 320px;
+    padding: 1rem;
+    border-radius: 8px;
+    transform: scale(0.9); /* Start scaled down */
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.popup-content.show {
+    transform: scale(1); /* Scale up to normal size */
+}
