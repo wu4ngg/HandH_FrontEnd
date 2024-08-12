@@ -23,34 +23,35 @@ const Navbar: React.FC = () => {
     });
 
     return (
-        <nav className=" bg-white sticky top-0">
+        <nav className=" bg-white sticky top-0 z-10">
             <div className="flex mx-auto px-20 py-4 justify-between items-center">
-                <div className="flex justify-start gap-4">
+                <div className="flex justify-between gap-4">
                     <div className="flex-shrink-0 flex items-center">
                         <NavLink to="/">
                             <img className="h-8 w-auto" src="\src\assets\image\logo_header.png" alt="Logo" />
                         </NavLink>
                     </div>
-                    <div className="hidden md:block">
-                        <div className="flex space-x-4">
-                            <NavLink
-                                to="/"
-                                className="text-title-nav hover:underline  hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
-                            >
-                                Trang chủ
-                            </NavLink>
-                            <NavLink
-                                to="/shop"
-                                className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
-                            >
-                                Cửa Hàng
-                            </NavLink>
-                            <NavLink
-                                to="/purchaseOrder"
-                                className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium">
-                                Đơn mua
-                            </NavLink>
-                        </div>
+
+                </div>
+                <div className="hidden md:block">
+                    <div className="flex space-x-4">
+                        <NavLink
+                            to="/"
+                            className="text-title-nav hover:underline  hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
+                        >
+                            Trang chủ
+                        </NavLink>
+                        <NavLink
+                            to="/shop"
+                            className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
+                        >
+                            Cửa Hàng
+                        </NavLink>
+                        <NavLink
+                            to="/purchaseOrder"
+                            className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium">
+                            Đơn mua
+                        </NavLink>
                     </div>
                 </div>
                 <HeaderComponentSearch></HeaderComponentSearch>
@@ -71,7 +72,7 @@ const Navbar: React.FC = () => {
                                     value="Danh mục sản phẩm" />
                             </div>
                         </div>
-                            :   
+                            :
                             <div className="pl-4 flex gap-2 items-center bg-primary-grey hover:opacity-40 duration-200 ease-linear rounded-xl">
                                 <div className="flex gap-2 items-center">
                                     <Close className="text-black "></Close>
