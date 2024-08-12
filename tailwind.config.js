@@ -6,9 +6,16 @@ export default {
   ],
   theme: {
     extend: {
-      
+      colors: {
+        'black-transclusent': '#000000',
+        'white': '#fff',
+        gray: {
+          300: "#E8E8E8",
+          200: "#DCDCDC"
+        }
+      }
     },
-    
+
   },
   plugins: [],
 }
