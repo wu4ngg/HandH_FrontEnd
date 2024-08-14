@@ -14,10 +14,10 @@ const boxCategory: React.FC<ICategory> = (props) => {
                 </div>
                 <div className="infomation-cate">
                     <div className="name-cate">
-                        <p className="text-black font-bold">{category_name} </p>
+                        <p className="text-black font-bold">{category_name}</p>
                     </div>
                     <div className="total-cate">
-                        <p className="text-gray-200 text-sm">{category_total} sản phẩm liên quan</p>
+                        <p className="text-gray-400 text-sm">{category_total} sản phẩm liên quan</p>
                     </div>
                 </div>
             </div>

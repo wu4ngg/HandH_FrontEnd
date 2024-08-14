@@ -12,7 +12,6 @@ import boxCategory from "../widget/boxCategory.widget";
 import { duration } from "@mui/material";
 
 const Navbar: React.FC = () => {
-
   const [showCate, setShowCate] = React.useState(false);
   const transitions = useTransition(showCate, {
     from: { y: -16, opacity: 0, backgroundColor: "rgba(0, 0, 0, 0)" },
@@ -24,7 +23,7 @@ const Navbar: React.FC = () => {
     },
   });
   return (
-    <nav className=" bg-white sticky top-0">
+    <nav className=" bg-white fixed top-0 z-10">
       <div className="flex mx-auto px-20 py-4 justify-between items-center">
         <div className="flex justify-start gap-4">
           <div className="flex-shrink-0 flex items-center">
@@ -61,12 +60,17 @@ const Navbar: React.FC = () => {
         </div>
         <HeaderComponentSearch></HeaderComponentSearch>
       </div>
-      <div className="flex px-0 py-0  items-center flex-col ">
+      <div className="flex px-0 py-0 pb-3  items-center flex-col ">
         {/* <HeaderBottom></HeaderBottom> */}
         <div className="flex items-center justify-between w-screen px-20">
           {!showCate ? (
             <div className="pl-4 flex gap-2 items-center bg-button-primary hover:opacity-40 duration-200 ease-linear rounded-xl">
-              <div className="flex gap-2 items-center">
+              <div
+                onClick={() => {
+                  setShowCate(!showCate);
+                }}
+                className="flex gap-2 items-center"
+              >
                 <Menu className="text-black "></Menu>
                 <input
                   onClick={() => {
@@ -80,7 +84,12 @@ const Navbar: React.FC = () => {
             </div>
           ) : (
             <div className="pl-4 flex gap-2 items-center bg-primary-grey hover:opacity-40 duration-200 ease-linear rounded-xl">
-              <div className="flex gap-2 items-center">
+              <div
+                onClick={() => {
+                  setShowCate(!showCate);
+                }}
+                className="flex gap-2 items-center"
+              >
                 <Close className="text-black "></Close>
                 <input
                   onClick={() => {
@@ -111,26 +120,26 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
-        {transitions(
-          (style, isOpen) =>
-            isOpen && (
-              <animated.div
-                style={{ backgroundColor: style.backgroundColor }}
-                className="w-screen h-screen bg-opacity-40 mt-2"
-              >
-                {transitions((style1, isOpen) => (
-                  <animated.div style={{ y: style.y, opacity: style.opacity }}>
-                    <div className="bg-white absolute left-20 mt-4 w-80 p-4 rounded-3xl">
-                      {sampleCategories.map((category: ICategory, index) => (
-                        <div key={index}>{boxCategory(category)}</div>
-                      ))}
-                    </div>
-                  </animated.div>
-                ))}
-              </animated.div>
-            )
-        )}
       </div>
+      {transitions(
+        (style, isOpen) =>
+          isOpen && (
+            <animated.div
+              style={{ backgroundColor: style.backgroundColor }}
+              className="w-screen h-screen fixed bg-opacity-40 mt-[0px] z-0"
+            >
+              {transitions((style1, isOpen) => (
+                <animated.div style={{ y: style.y, opacity: style.opacity }}>
+                  <div className="bg-white absolute left-20 mt-4 w-80 p-4 rounded-3xl">
+                    {sampleCategories.map((category: ICategory, index) => (
+                      <div key={index}>{boxCategory(category)}</div>
+                    ))}
+                  </div>
+                </animated.div>
+              ))}
+            </animated.div>
+          )
+      )}
     </nav>
   );
 };
