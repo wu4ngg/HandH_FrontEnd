@@ -4,6 +4,8 @@ import ImagesProduct from "../widget/imagesProduct";
 import ColorChip from "../widget/colorChip";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Add, RemoveOutlined } from "@mui/icons-material";
+import ImageViewer from "../widget/imageViewer";
+import Footer from "../widget/footer";
 export default function Product() {
   const [quantity, setQuantity] = useState(1);
   const [sizes, setSizes] = useState([
@@ -56,86 +58,123 @@ export default function Product() {
     });
   }
   return (
-    <div className="product_main flex flex-1 gap-8 px-20 pb-10 justify-stretch relative">
-      <div className="w-1/2 flex">
-        <ImagesProduct
-          imgList={[
-            {
-              img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66bb0232&is=66b9b0b2&hm=3509358974e4fa65aa0c34fa0e3f2982072cf23853ac836f899aa599a75edbae&=&format=webp&width=750&height=1332",
-            },
-            {
-              img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66bb0232&is=66b9b0b2&hm=3509358974e4fa65aa0c34fa0e3f2982072cf23853ac836f899aa599a75edbae&=&format=webp&width=750&height=1332",
-            },
-            {
-              img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66bb0232&is=66b9b0b2&hm=3509358974e4fa65aa0c34fa0e3f2982072cf23853ac836f899aa599a75edbae&=&format=webp&width=750&height=1332",
-            },
-          ]}
-        />
-      </div>
-      <div className="flex flex-col gap-4 sticky top-[9.5rem] self-start">
-        <div>
-          <h1>Lorem Ipsum Dolor Sit Amet</h1>
-          <h2 className="text-3xl font-light">590.000 đồng</h2>
+    <div>
+      <div className="product_main flex flex-1 gap-8 px-20 pb-10 justify-stretch relative box-border">
+        <div className="w-1/2 flex">
+          <ImagesProduct
+            imgList={[
+              {
+                img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66c0f0f2&is=66bf9f72&hm=528d1113d942a9ae468b1a4998daa5b67e86d1b2f1ee02efd4e29d5aa98cd80b&=&format=webp&width=750&height=1332",
+              },
+              {
+                img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66c0f0f2&is=66bf9f72&hm=528d1113d942a9ae468b1a4998daa5b67e86d1b2f1ee02efd4e29d5aa98cd80b&=&format=webp&width=750&height=1332",
+              },
+              {
+                img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66c0f0f2&is=66bf9f72&hm=528d1113d942a9ae468b1a4998daa5b67e86d1b2f1ee02efd4e29d5aa98cd80b&=&format=webp&width=750&height=1332",
+              },
+            ]}
+          />
         </div>
-        <div className="flex flex-col gap-4">
-          <h3 className="text-2xl font-light">Kích cỡ</h3>
-          <div className="flex gap-4 w-full">
-            {sizes.map((e) => (
-              <Chip
-                enabled={e.enabled}
-                onClick={(enabled) => {
-                  setSizes(() => changeSelected(e, sizes, enabled));
-                }}
-              >
-                {e.name}
-              </Chip>
-            ))}
+        <div className="flex flex-col gap-4 sticky top-[9.5rem] self-start w-1/2">
+          <div>
+            <h1>Lorem Ipsum Dolor Sit Amet</h1>
+            <h2 className="text-3xl font-light">590.000 đồng</h2>
           </div>
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-light">Màu sắc</h2>
+          <div className="flex flex-col gap-4">
+            <h3 className="text-2xl font-light">Kích cỡ</h3>
             <div className="flex gap-4 w-full">
-              {colors.map((e) => (
-                <ColorChip
-                  active={e.enabled}
-                  color={e.color}
-                  onClick={(selected) => {
-                    setColors(() => changeSelected(e, colors, selected));
+              {sizes.map((e) => (
+                <Chip
+                  enabled={e.enabled}
+                  onClick={(enabled) => {
+                    setSizes(() => changeSelected(e, sizes, enabled));
                   }}
-                  tooltip={e.tooltip}
-                />
+                >
+                  {e.name}
+                </Chip>
               ))}
             </div>
-          </div>
-          <div className="flex gap-2">
-            <button className="bg-primary flex items-center gap-4">
-              <ShoppingCartOutlinedIcon />
-              Thêm vào giỏ
-            </button>
-            <div className="button flex items-center gap-6 cursor-default">
-              <div
-                onClick={() => {
-                  setQuantity((prev) => {
-                    if (quantity > 1) {
-                      return quantity - 1;
-                    }
-                    return quantity;
-                  });
-                }}
-              >
-                <RemoveOutlined />
+            <div className="flex flex-col gap-2">
+              <h2 className="text-2xl font-light">Màu sắc</h2>
+              <div className="flex gap-4 w-full">
+                {colors.map((e) => (
+                  <ColorChip
+                    active={e.enabled}
+                    color={e.color}
+                    onClick={(selected) => {
+                      setColors(() => changeSelected(e, colors, selected));
+                    }}
+                    tooltip={e.tooltip}
+                  />
+                ))}
               </div>
-              <p>{quantity}</p>
-              <div
-                onClick={() => {
-                  setQuantity(() => quantity + 1);
-                }}
-              >
-                <Add />
+            </div>
+            <div className="flex gap-2">
+              <button className="bg-primary flex items-center gap-4">
+                <ShoppingCartOutlinedIcon />
+                Thêm vào giỏ
+              </button>
+              <div className="button flex items-center gap-6 cursor-default">
+                <div
+                  onClick={() => {
+                    setQuantity((prev) => {
+                      if (quantity > 1) {
+                        return quantity - 1;
+                      }
+                      return quantity;
+                    });
+                  }}
+                >
+                  <RemoveOutlined />
+                </div>
+                <p>{quantity}</p>
+                <div
+                  onClick={() => {
+                    setQuantity(() => quantity + 1);
+                  }}
+                >
+                  <Add />
+                </div>
               </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h2 className="text-2xl font-light">Mô tả</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur. Turpis sed tempus vel
+                neque eget sed tellus non senectus. Pellentesque maecenas
+                gravida dis arcu. Ut velit diam ut pulvinar nulla. Integer
+                rhoncus egestas consequat semper. Lobortis dictum sit ipsum
+                velit amet arcu bibendum ut gravida. Ut habitasse purus proin
+                amet nisi ipsum. Sed venenatis rhoncus nam odio elementum. Urna
+                leo ultricies quisque elementum. Urna leo diam id lacus ac quis
+                integer. Enim id sed tellus in id. Ultricies convallis mattis
+                tristique sit enim nec aliquet. Ligula auctor diam molestie sit
+                lectus mattis purus faucibus. Lorem ipsum dolor sit amet
+                consectetur. Turpis sed tempus vel neque eget sed tellus non
+                senectus. Pellentesque maecenas gravida dis arcu. Ut velit diam
+                ut pulvinar nulla. Integer rhoncus egestas consequat semper.
+                Lobortis dictum sit ipsum velit amet arcu bibendum ut gravida.
+                Ut habitasse purus proin amet nisi ipsum. Sed venenatis rhoncus
+                nam odio elementum. Urna leo ultricies quisque elementum. Urna
+                leo diam id lacus ac quis integer. Enim id sed tellus in id.
+                Ultricies convallis mattis tristique sit enim nec aliquet.
+                Ligula auctor diam molestie sit lectus mattis purus faucibus.
+                Lorem ipsum dolor sit amet consectetur. Turpis sed tempus vel
+                neque eget sed tellus non senectus. Pellentesque maecenas
+                gravida dis arcu. Ut velit diam ut pulvinar nulla. Integer
+                rhoncus egestas consequat semper. Lobortis dictum sit ipsum
+                velit amet arcu bibendum ut gravida. Ut habitasse purus proin
+                amet nisi ipsum. Sed venenatis rhoncus nam odio elementum. Urna
+                leo ultricies quisque elementum. Urna leo diam id lacus ac quis
+                integer. Enim id sed tellus in id. Ultricies convallis mattis
+                tristique sit enim nec aliquet. Ligula auctor diam molestie sit
+                lectus mattis purus faucibus.
+              </p>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

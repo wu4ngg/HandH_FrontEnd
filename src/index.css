@@ -54,12 +54,9 @@ button, .button {
   background-color: #E8E8E8;
   cursor: pointer;
 }
-button:hover{
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.182);
-}
 button:active{
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.182);
-  transform: translateY(5px);
+  transform: scale(0.95);
 }
 
 @media (prefers-color-scheme: light) {

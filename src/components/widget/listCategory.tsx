@@ -12,3 +12,4 @@ const ListCategory: React.FC = () => {
 }
 
 export default ListCategory
+
