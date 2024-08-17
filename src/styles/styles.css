@@ -1,49 +1,150 @@
 .text-title-nav {
-    color: #484848;
+  color: #484848;
 }
 
 .text-color-primary {
-    color: #000;
+  color: #000;
 }
 
 .text-button-primary {
-    background-color: #FFECC4
+  background-color: #ffecc4;
+}
+.text-color-secondnary {
+  color: #ffc64e;
 }
 
+
+#text-register {
+  font-weight: bold;
+}
 .bg-button-primary {
-    background-color: #FFECC4
+  background-color: #ffecc4;
 }
 
 .bg-primary-grey {
-    background-color: #DDDDDD
+  background-color: #dddddd;
 }
 
 .bg-search-field {
-    background-color: #ECECEC;
+  background-color: #ececec;
 }
 
 .bg-select-grey {
-    color: #F9F9F9
+  color: #f9f9f9;
 }
 
 .transition-ease-in-out {
-    transition: all 0.35s ease-in-out;   
+  transition: all 0.35s ease-in-out;
 }
 
 .transition-ease-in-ou:hover {
-    transition: all 0.35s ease-in-out;   
+  transition: all 0.35s ease-in-out;
 }
 
 .popup-content {
-    background-color: white;
-    width: 320px;
-    padding: 1rem;
-    border-radius: 8px;
-    transform: scale(0.9); /* Start scaled down */
-    transition: transform 0.3s ease-in-out;
+  background-color: white;
+  width: 320px;
+  padding: 1rem;
+  border-radius: 8px;
+  transform: scale(0.9); /* Start scaled down */
+  transition: transform 0.3s ease-in-out;
 }
 
-
 .popup-content.show {
-    transform: scale(1); /* Scale up to normal size */
+  transform: scale(1); /* Scale up to normal size */
+}
+
+.popup-login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20pt;
+  width: 350pt;
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10pt;
+  z-index: 1000;
+}
+
+.popup-register {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20pt;
+  width: 350pt;
+  text-align: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10pt;
+  z-index: 1000;
+}
+
+.popup-login input::placeholder {
+  padding-left: 10pt;
+}
+.popup-register input::placeholder {
+  padding-left: 10pt;
+}
+
+.bottom-popup-login {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 20pt;
+}
+
+.popup-login input {
+  width: 85%;
+  height: 30pt;
+  border-radius: 10pt;
+}
+
+.popup-register input {
+  width: 85%;
+  height: 30pt;
+  border-radius: 10pt;
+}
+
+.btn-continute {
+  width: 85%;
+  background-color: #ffecc4;
+  font-weight: bold;
+
+  border-radius: 20pt;
+}
+.btn-continute-with-google {
+  width: 85%;
+  background-color: #dddddd;
+  border-radius: 20pt;
+}
+
+.btn-close {
+  text-align: end;
+  width: 100%;
+  padding: 10pt;
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu xám trong suốt */
+  z-index: 9999;
+  position: fixed;
+}
+.btn-continute-re {
+  width: 85%;
+  background-color: #ffecc4;
+  font-weight: bold;
+  border-radius: 20pt;
+}
+.bottom-register{
+  width: 100%;
+  padding: 20pt;
 }
