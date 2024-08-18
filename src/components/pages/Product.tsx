@@ -59,7 +59,7 @@ export default function Product() {
     });
   }
   return (
-    <div>
+    <div className="pt-4">
       <div className="product_main flex flex-1 gap-8 px-20 pb-10 justify-stretch relative box-border">
         <div className="w-1/2 flex">
           <ImagesProduct

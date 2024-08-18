@@ -25,7 +25,7 @@ const App = () => {
         >
           <ImageViewer />
         </ImageModelContext.Provider>
-        <main className="flex-grow flex mt-[9.5rem]">
+        <main className="flex-grow flex mt-[10.2rem]">
           <AppRoutes></AppRoutes>
         </main>
       </div>
