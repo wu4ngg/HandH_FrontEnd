@@ -11,8 +11,10 @@ export default {
         'white': '#fff',
         gray: {
           300: "#E8E8E8",
-          200: "#DCDCDC"
-        }
+          200: "#DCDCDC",
+          400: "rgba(0, 0, 0, 0.34)"
+        },
+        primary: "#FFECC4"
       }
     },
 
