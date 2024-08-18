@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Chip from "../widget/chip";
 import ImagesProduct from "../widget/imagesProduct";
 import ColorChip from "../widget/colorChip";
@@ -6,6 +6,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Add, RemoveOutlined } from "@mui/icons-material";
 import ImageViewer from "../widget/imageViewer";
 import Footer from "../widget/footer";
+import { ImageModelContext } from "../../providers/Providers";
 export default function Product() {
   const [quantity, setQuantity] = useState(1);
   const [sizes, setSizes] = useState([
@@ -64,13 +65,13 @@ export default function Product() {
           <ImagesProduct
             imgList={[
               {
-                img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66c0f0f2&is=66bf9f72&hm=528d1113d942a9ae468b1a4998daa5b67e86d1b2f1ee02efd4e29d5aa98cd80b&=&format=webp&width=750&height=1332",
+                img: "/sample_image.jpg",
               },
               {
-                img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66c0f0f2&is=66bf9f72&hm=528d1113d942a9ae468b1a4998daa5b67e86d1b2f1ee02efd4e29d5aa98cd80b&=&format=webp&width=750&height=1332",
+                img: "/sample_image.jpg",
               },
               {
-                img: "https://media.discordapp.net/attachments/716878834976161843/1272447086884819095/20240810_173733.jpg?ex=66c0f0f2&is=66bf9f72&hm=528d1113d942a9ae468b1a4998daa5b67e86d1b2f1ee02efd4e29d5aa98cd80b&=&format=webp&width=750&height=1332",
+                img: "/sample_image.jpg",
               },
             ]}
           />

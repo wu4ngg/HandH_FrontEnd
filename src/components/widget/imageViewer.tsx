@@ -3,8 +3,8 @@ import { useTransition, animated } from "react-spring";
 import { ImageModelContext } from "../../providers/Providers";
 
 function ImageViewer() {
-    const {isOpen, images, currentIndex} = useContext(ImageModelContext);
-  const transitions = useTransition(isOpen, {
+    const {value} = useContext(ImageModelContext)
+  const transitions = useTransition(value.isOpen, {
     from: { scale: "85%", opacity: 0, backgroundColor: "rgba(0, 0, 0, 0)" },
     enter: {
       scale: "100%",
