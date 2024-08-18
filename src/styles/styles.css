@@ -27,11 +27,11 @@
 }
 
 .transition-ease-in-out {
-    transition: all 0.35s ease-in-out;   
+    transition: all 0.35s ease-in-out;
 }
 
 .transition-ease-in-ou:hover {
-    transition: all 0.35s ease-in-out;   
+    transition: all 0.35s ease-in-out;
 }
 
 .popup-content {
@@ -39,27 +39,199 @@
     width: 320px;
     padding: 1rem;
     border-radius: 8px;
-    transform: scale(0.9); /* Start scaled down */
+    transform: scale(0.9);
+    /* Start scaled down */
     transition: transform 0.3s ease-in-out;
 }
 
 
 .popup-content.show {
-    transform: scale(1); /* Scale up to normal size */
+    transform: scale(1);
+    /* Scale up to normal size */
 }
 
 .home-new-list-product {
     display: flex;
-    flex-wrap: wrap; /* Cho phép các sản phẩm xuống dòng */
-    gap: 16px; /* Khoảng cách giữa các sản phẩm */
+    flex-wrap: wrap;
+    /* Cho phép các sản phẩm xuống dòng */
+    gap: 16px;
+    /* Khoảng cách giữa các sản phẩm */
 }
 
 .product_item {
-    flex: 1 1 calc(25% - 16px); /* Chiếm 25% chiều rộng của container, trừ khoảng cách */
-    margin: 8px; /* Khoảng cách bên ngoài mỗi sản phẩm */
+    flex: 1 1 calc(25% - 16px);
+    /* Chiếm 25% chiều rộng của container, trừ khoảng cách */
+    margin: 8px;
+    /* Khoảng cách bên ngoài mỗi sản phẩm */
 }
 
 .product_item {
-    max-width: calc(25% - 16px); /* Đảm bảo không chiếm quá 25% chiều rộng của container */
-    box-sizing: border-box; /* Bao gồm padding và border trong kích thước tổng cộng */
+    max-width: calc(25% - 16px);
+    /* Đảm bảo không chiếm quá 25% chiều rộng của container */
+    box-sizing: border-box;
+    /* Bao gồm padding và border trong kích thước tổng cộng */
 }
+
+
+
+
+#text-register {
+    font-weight: bold;
+}
+
+.bg-button-primary {
+    background-color: #ffecc4;
+}
+
+.bg-primary-grey {
+    background-color: #dddddd;
+}
+
+.bg-search-field {
+    background-color: #ececec;
+}
+
+.bg-select-grey {
+    color: #f9f9f9;
+}
+
+.transition-ease-in-out {
+    transition: all 0.35s ease-in-out;
+}
+
+.transition-ease-in-ou:hover {
+    transition: all 0.35s ease-in-out;
+}
+
+.popup-content {
+    background-color: white;
+    width: 320px;
+    padding: 1rem;
+    border-radius: 8px;
+    transform: scale(0.9);
+    /* Start scaled down */
+    transition: transform 0.3s ease-in-out;
+}
+
+.popup-content.show {
+    transform: scale(1);
+    /* Scale up to normal size */
+}
+
+.popup-login {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20pt;
+    width: 350pt;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10pt;
+    z-index: 1000;
+}
+
+.popup-register {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20pt;
+    width: 350pt;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10pt;
+    z-index: 1000;
+}
+
+.popup-login input::placeholder {
+    padding-left: 10pt;
+}
+
+.popup-register input::placeholder {
+    padding-left: 10pt;
+}
+
+.bottom-popup-login {
+    display: flex;
+    gap: 0.5rem;
+    padding-bottom: 20pt;
+}
+
+.popup-login input {
+    width: 85%;
+    height: 30pt;
+    border-radius: 10pt;
+}
+
+.popup-register input {
+    width: 85%;
+    height: 30pt;
+    border-radius: 10pt;
+}
+
+.btn-continute {
+    width: 85%;
+    background-color: #ffecc4;
+    font-weight: bold;
+
+    border-radius: 20pt;
+}
+
+.btn-continute-with-google {
+    width: 85%;
+    background-color: #dddddd;
+    border-radius: 20pt;
+}
+
+.btn-close {
+    text-align: end;
+    width: 100%;
+    padding: 10pt;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    position: fixed;
+}
+
+.btn-continute-re {
+    width: 85%;
+    background-color: #ffecc4;
+    font-weight: bold;
+    border-radius: 20pt;
+}
+
+.bottom-register {
+    width: 100%;
+    padding: 20pt;
+    transform: scale(1);
+}
+
+.home-new-list-product {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.product_item {
+    flex: 1 1 calc(25% - 16px);
+    margin: 8px;
+}
+
+.product_item {
+    max-width: calc(25% - 16px);
+    box-sizing: border-box;
+}
+  

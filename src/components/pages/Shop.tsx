@@ -7,6 +7,7 @@ import { convertMoney } from "../../utils";
 // import { useSpring, animated, useTransition , config } from "react-spring";
 import SizeWidget from "../widget/sizeWidget";
 import { useSpring, animated, useTransition } from "react-spring";
+import ColorChip from "../widget/colorChip";
 type PriceFilter = {
     id: number,
     price: number,
@@ -22,6 +23,24 @@ export type Size = {
 }
 
 const Shop: React.FC = () => {
+
+    const [colors, setColors] = React.useState([
+        {
+            tooltip: "Xanh dương",
+            color: "#8DB4D2",
+            enabled: true,
+        },
+        {
+            tooltip: "Đen",
+            color: "#000",
+            enabled: false,
+        },
+        {
+            tooltip: "Hồng",
+            color: "#FFD1DC",
+            enabled: false,
+        },
+    ]);
 
     const dataFilter: PriceFilter[] = [
         {
@@ -108,7 +127,21 @@ const Shop: React.FC = () => {
         setShowNav(!showNav)
     }
 
-   
+    function changeSelected(element: any, array: Array<any>, value: boolean) {
+        return array.map((e) => {
+            if (e == element) {
+                return {
+                    ...element,
+                    enabled: value,
+                };
+            }
+            return {
+                ...e,
+                enabled: false,
+            };
+        });
+    }
+
 
     const transition = useTransition(showNav, {
         from: {
@@ -195,11 +228,11 @@ const Shop: React.FC = () => {
                                             </div>
                                             <div className="specific-price flex gap-2 items-center">
                                                 <input className="input-specific bg-slate-300 rounded-3xl
-         pl-4 py-2 w-[25%] duration-200 ease-in
+         pl-4 pr-4 py-2 w-[25%] duration-200 ease-in
           outline-none  focus:border-none " type="text" name="" placeholder="0" id="" />
                                                 <div className="flash">-</div>
                                                 <input className="input-specific bg-slate-300 rounded-3xl
-         pl-4 py-2 w-[25%] duration-200 ease-in
+         pl-4 pr-4 py-2 w-[25%] duration-200 ease-in
            outline-none focus:border-none " type="text" name="" placeholder="99999" id="" />
                                             </div>
 
@@ -233,8 +266,17 @@ const Shop: React.FC = () => {
                                                 <p>Màu sắc</p>
                                             </div>
 
-                                            <div className="pick-color">
-
+                                            <div className="pick-color flex gap-4">
+                                                {colors.map((e: any) => (
+                                                    <ColorChip
+                                                        active={e.enabled}
+                                                        color={e.color}
+                                                        onClick={(selected) => {
+                                                            setColors(() => changeSelected(e, colors, selected));
+                                                        }}
+                                                        tooltip={e.tooltip}
+                                                    />
+                                                ))}
                                             </div>
                                         </div>
                                     </animated.div>

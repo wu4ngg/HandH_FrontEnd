@@ -1,6 +1,7 @@
 
 
 .shop-filter{
+    flex: 1.5 !important;
 }
 .shop-product{
     flex: 2;
@@ -53,11 +54,5 @@
     outline: solid 2px snow;
 }
 
-.shop-filter {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    top: 4rem; /* or top-16 as per your Tailwind setup */
-    padding: 1rem;
-}
 
 

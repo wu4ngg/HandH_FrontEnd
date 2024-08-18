@@ -7,6 +7,8 @@ import { Menu, Close } from "@mui/icons-material";
 import { useSpring, animated, useTransition } from "react-spring";
 import { ICategory, sampleCategories } from "../../types/category";
 import boxCategory from "../widget/boxCategory.widget";
+import PopupComponent from "../widget/popUpComponent";
+import PopupRegister from "../widget/popUpRegister";
 // import { duration } from "@mui/material";
 
 const Navbar: React.FC = () => {
@@ -23,7 +25,18 @@ const Navbar: React.FC = () => {
     },
   });
 
-  
+
+  const [login, setLogin] = React.useState(false);
+  const [register, setRegister] = React.useState(false);
+
+  function handleChange() {
+    setLogin(false);
+  }
+  function handleChangeRe() {
+    setRegister(false);
+  }
+
+
 
 
   return (
@@ -110,6 +123,7 @@ const Navbar: React.FC = () => {
           <div className="flex gap-6">
             <div>
               <input
+                onClick={() => setLogin(!login)}
                 className="font-bold underline  hover:text-black hover:bg-gray-100 transition-all duration-800 ease-linear hover:cursor-pointer px-4 py-3 rounded-2xl"
                 type="button"
                 value="Đăng nhập"
@@ -117,6 +131,7 @@ const Navbar: React.FC = () => {
             </div>
             <div>
               <input
+                onClick={() => setRegister(!register)}
                 className="font-bold underline  hover:text-black hover:bg-gray-100 transition-all duration-800 ease-linear hover:cursor-pointer px-4 py-3 rounded-2xl"
                 type="button"
                 value="Đăng kí"
@@ -125,6 +140,10 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
+      {login && (
+        <PopupComponent handleChange={handleChange}></PopupComponent>
+      )}
+      {register && (<PopupRegister handleChange={handleChangeRe}></PopupRegister>)}
       {transitions(
         (style, isOpen) =>
           isOpen && (
