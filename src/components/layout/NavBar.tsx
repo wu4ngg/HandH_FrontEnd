@@ -7,7 +7,7 @@ import '../../styles/styles.css'
 import React from "react";
 import HeaderComponentSearch from "../widget/headerComponentSearch";
 import {
-    Menu
+    Menu,Badge
 } from "@mui/icons-material";
 
 const Navbar: React.FC = () => {
@@ -65,9 +65,13 @@ const Navbar: React.FC = () => {
                             value="Danh mục sản phẩm" />
                     </div>
 
-                    <div>
-                        <p className="text-black">Concac</p>
-                    </div>
+
+                    <NavLink
+                        to="/managerAccount"
+                        className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
+                    >
+                        Xin chào, User!
+                    </NavLink>
                 </div>
 
                 {

@@ -9,7 +9,7 @@ const App = () => {
     <Router>
       <div className='flex flex-col min-h-screen w-screen'>
         <Navbar></Navbar>
-        <main className='flex-grow mt-12'>
+        <main className='flex-grow flex mt-12'>
           <AppRoutes></AppRoutes>
         </main>
       </div>
