@@ -3,14 +3,17 @@ import { IProduct } from "../../types/product.type";
 import { Favorite, FavoriteBorder, FiberManualRecord } from "@mui/icons-material";
 import '../../styles/home.css'
 import { convertMoney } from "../../utils";
+import { Link, useNavigate } from "react-router-dom";
 const ProductItem: React.FC<IProduct> = (props) => {
-    const { product_name, product_price, product_thumb, product_variations } = props;
+    const { product_name, product_price, product_thumb, product_variations, product_slug } = props;
 
-
+    const navigate = useNavigate();
     const [favorite, setFavorite] = React.useState(false);
 
     return (
-        <div className="product_item-main  rounded-3xl duration-500 hover:-translate-y-2 hover:cursor-pointer hover:shadow-lg">
+        <div onClick={() => {
+            navigate(`/product/${product_slug}/${product_name}`)
+        }} className="product_item-main rounded-3xl duration-500 hover:-translate-y-2 hover:cursor-pointer hover:shadow-lg">
             <div className="product_item-image w-full">
                 <img src={product_thumb} className="w-full h-[360px] scale-90 object-cover rounded-sm"alt="" />
                 <div className="wrap-product-info flex w-full items-start justify-between p-4">
