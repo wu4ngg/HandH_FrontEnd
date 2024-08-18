@@ -1,0 +1,63 @@
+
+
+.shop-filter{
+}
+.shop-product{
+    flex: 2;
+}
+
+.filer-hide-btn{
+
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    background-color: #f1f1f1;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-checkbox:checked {
+    border-color: #000000;
+    background-color: cornflowerblue !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.new-product,
+.bestseller-product {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+
+.input-specific:focus {
+    outline: solid 2px snow;
+}
+
+.shop-filter {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 4rem; /* or top-16 as per your Tailwind setup */
+    padding: 1rem;
+}
+
+
