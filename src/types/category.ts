@@ -22,13 +22,13 @@ const sampleCategories: ICategory[] = [
     {
         category_name: 'Quần',
         category_description: 'Trendy and fashionable clothing items.',
-        cagtegory_image: 'https://owen.cdn.vccloud.vn/media/catalog/product/cache/323c1569b2962717ca2c8faa79ff3a65/q/l/qlbw221082.png',
+        cagtegory_image: 'https://bizweb.dktcdn.net/100/479/837/products/4186-634x634-2022-03-04t102818-881-1680531545008.png?v=1688705311553',
         category_total: 300
     },
     {
-        category_name: 'Đồ bộ',
+        category_name: 'Áo khoác',
         category_description: 'Trendy and fashionable clothing items.',
-        cagtegory_image: 'https://195designs.com/cdn/shop/products/IMG_6575_clipped_rev_1.png?v=1639390507',
+        cagtegory_image: 'https://chiinstore.com/media/product/3928_634x634___2021_12_30t111520_009.png',
         category_total: 300
     }
 ];

@@ -47,3 +47,19 @@
 .popup-content.show {
     transform: scale(1); /* Scale up to normal size */
 }
+
+.home-new-list-product {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các sản phẩm xuống dòng */
+    gap: 16px; /* Khoảng cách giữa các sản phẩm */
+}
+
+.product_item {
+    flex: 1 1 calc(25% - 16px); /* Chiếm 25% chiều rộng của container, trừ khoảng cách */
+    margin: 8px; /* Khoảng cách bên ngoài mỗi sản phẩm */
+}
+
+.product_item {
+    max-width: calc(25% - 16px); /* Đảm bảo không chiếm quá 25% chiều rộng của container */
+    box-sizing: border-box; /* Bao gồm padding và border trong kích thước tổng cộng */
+}

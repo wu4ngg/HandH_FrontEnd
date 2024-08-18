@@ -1,17 +1,16 @@
 import { NavLink } from "react-router-dom";
-// import ShoppingCartIcon from 'remixicon-react/ShoppingCartLineIcon'
 import "../../styles/styles.css";
-// import ButtonHeaderWidget from "../widget/buttonHeader.widget";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import HeaderComponentSearch from "../widget/headerComponentSearch";
 import { Menu, Close } from "@mui/icons-material";
 import { useSpring, animated, useTransition } from "react-spring";
 import { ICategory, sampleCategories } from "../../types/category";
 import boxCategory from "../widget/boxCategory.widget";
-import { duration } from "@mui/material";
+// import { duration } from "@mui/material";
 
 const Navbar: React.FC = () => {
+
 
   const [showCate, setShowCate] = React.useState(false);
   const transitions = useTransition(showCate, {
@@ -23,8 +22,12 @@ const Navbar: React.FC = () => {
       friction: 14,
     },
   });
+
+  
+
+
   return (
-    <nav className=" bg-white sticky top-0">
+    <nav id="nav-main" className=" bg-white sticky top-0 z-10 rounded-b-3xl shadow-md">
       <div className="flex mx-auto px-20 py-4 justify-between items-center">
         <div className="flex justify-start gap-4">
           <div className="flex-shrink-0 flex items-center">
@@ -63,7 +66,7 @@ const Navbar: React.FC = () => {
       </div>
       <div className="flex px-0 py-0  items-center flex-col ">
         {/* <HeaderBottom></HeaderBottom> */}
-        <div className="flex items-center justify-between w-screen px-20">
+        <div className="flex items-center justify-between w-full px-20 pb-4 rounded-b-2xl">
           {!showCate ? (
             <div className="pl-4 flex gap-2 items-center bg-button-primary hover:opacity-40 duration-200 ease-linear rounded-xl">
               <div className="flex gap-2 items-center">
@@ -116,7 +119,7 @@ const Navbar: React.FC = () => {
             isOpen && (
               <animated.div
                 style={{ backgroundColor: style.backgroundColor }}
-                className="w-screen h-screen bg-opacity-40 mt-2"
+                className="w-full h-screen bg-opacity-40 mt-2"
               >
                 {transitions((style1, isOpen) => (
                   <animated.div style={{ y: style.y, opacity: style.opacity }}>
