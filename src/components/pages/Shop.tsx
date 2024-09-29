@@ -8,6 +8,8 @@ import { convertMoney } from "../../utils";
 import SizeWidget from "../widget/sizeWidget";
 import { useSpring, animated, useTransition } from "react-spring";
 import ColorChip from "../widget/colorChip";
+import ProductComponentShop from "../widget/productComponentShop";
+import { TypeFilterPice, TypeObjPrice } from "../../types/some.type";
 type PriceFilter = {
     id: number,
     price: number,
@@ -20,6 +22,7 @@ export type Size = {
     type: string,
     isPick: boolean,
     isMore: boolean
+    onClick?: (size: string, id: number, checked: boolean) => void
 }
 
 const Shop: React.FC = () => {
@@ -100,14 +103,9 @@ const Shop: React.FC = () => {
             isPick: false,
             isMore: false
         },
+     
         {
             id: 6,
-            type: "XXL",
-            isPick: false,
-            isMore: false
-        },
-        {
-            id: 7,
             type: "XL",
             isPick: false,
             isMore: true
@@ -116,10 +114,19 @@ const Shop: React.FC = () => {
 
     const [listFilter, setListFilter] = React.useState<PriceFilter[]>(dataFilter)
 
+
+    const [priceFilter, setPriceFilter] = React.useState<TypeFilterPice>({
+        priceFilter: 0,
+        isHigher: false
+    })
     const handlePickPrice = (id: number) => {
         const updateFilter = listFilter.map((item) => item.id === id ? { ...item, isCheck: true } : { ...item, isCheck: false })
-        console.log(updateFilter)
         setListFilter(updateFilter)
+
+        setPriceFilter({
+            priceFilter: listFilter[id - 1].price,
+            isHigher: listFilter[id - 1].isHigher
+        })
     }
 
     const [showNav, setShowNav] = React.useState(true)
@@ -142,6 +149,8 @@ const Shop: React.FC = () => {
         });
     }
 
+    const [lowSpecificPrice, setLowPrice] = React.useState<number>(0)
+    const [highSpecificPrice, setHighPrice] = React.useState<number>(0)
 
     const transition = useTransition(showNav, {
         from: {
@@ -159,14 +168,48 @@ const Shop: React.FC = () => {
         config: { tension: 120, friction: 14 },
     })
 
+
+
+    const [objPrice, setObjPrice] = React.useState<TypeObjPrice>({
+        lowPrice: 0,
+        highPrice: 0
+    })
+
+
+    const [isLowHigh, setIsLowHigh] = React.useState<number>(3)
+
+
+    enum PriceOrder {
+        LowToHigh = 1,
+        HighToLow = 2,
+        Random = 3,
+    }
+
+
+    const [arrSize, setArrSize] = React.useState<string[]>([])
+    const [pickerColor, setPickerColor] = React.useState<string>('')
     return (
         <>
-            <div className="shop px-20">
-                <div className="wrap-shop flex gap-10 w-full">
-                    <div className="shop-filter sticky top-16 w-full" style={{
-                        flex: showNav ? 1 : 0
-                    }}>
-                        <div className="shop-filter_wrap flex flex-col gap-4 ">
+            <div className="shop px-20 w-screen">
+                <div className="wrap-shop justify-between flex">
+
+                    {
+                        !showNav ? <div className="showbutton-fillter fixed z-10 left-2 mt-3">
+                            <button className="rounded-lg" onClick={handleShow}>
+                                <ZoomOutMapIcon></ZoomOutMapIcon>
+                            </button>
+                        </div> : <></>
+                    }
+
+                    <div className="shop-filter flex mt-2 w-full mb-2 top-16"
+                        style={{
+                            display: showNav ? "flex" : "none"
+                        }}
+                    // style={{
+                    //     flex: showNav ? 1 : 0
+                    // }}
+                    >
+                        <div className="shop-filter_wrap fixed flex top-100 flex-col w-[22%] gap-2 ">
                             <div className="filer-hide-btn 
                             gap-4 items-center 
                             flex hover:bg-slate-200 
@@ -188,7 +231,7 @@ const Shop: React.FC = () => {
                             {
                                 transition((styles, showNav) => showNav && (
                                     <animated.div style={styles} className="Sidebar">
-                                        <div className="divider w-[60%] h-1 bg-black rounded-xl"></div>
+                                        <div className="divider w-[80%] h-1 bg-black rounded-xl"></div>
                                         <div className="title-filter">
                                             <p className="text-[40px] font-bold">Bộ lọc</p>
                                         </div>
@@ -208,52 +251,92 @@ const Shop: React.FC = () => {
                                             </div>
 
                                             <div className="list-available-price flex flex-wrap w-[50%] gap-2 ">
-                                                {listFilter.map((price) => (
-                                                    <div onClick={() => handlePickPrice(price.id)} key={price.id} className="price-child flex gap-1 px-2 py-1 w-fit bg-slate-300 hover:bg-white hover:outline cursor-pointer duration-200 rounded-md"
+                                                {
+                                                    listFilter.map((price) => (
+                                                        <div onClick={() => handlePickPrice(price.id)} key={price.id} className="price-child flex gap-1 px-2 py-1 w-fit bg-slate-300 hover:bg-white hover:outline cursor-pointer duration-200 rounded-md"
 
-                                                        style={{ backgroundColor: price.isCheck ? "#fff" : "", borderWidth: 1 }}
+                                                            style={{ backgroundColor: price.isCheck ? "#fff" : "", borderWidth: 1 }}
+                                                        >
+                                                            <p>{price.isHigher ? "Trên" : "Dưới"}</p>
+                                                            <span>{
+                                                                (price.price / 1000) / 100 < 10 ?
+                                                                    + (price.price / 1000) + "k"
+                                                                    : (price.price / 1000000) + "tr"
+                                                            }</span>
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+
+                                            <div className="wrap-filter_price flex flex-col">
+                                                <div className="child-title text-[1.4rem] font-bold">
+                                                    <p>Giá cụ thể</p>
+                                                </div>
+                                                <div className="specific-price flex gap-2 items-center flex-wrap">
+                                                    <input className="input-specific bg-slate-300 rounded-3xl
+         pl-4 pr-4 py-2 w-[25%] duration-200 ease-in
+          outline-none  focus:border-none " type="text" name="" placeholder="0"
+                                                        onChange={(e: any) => {
+                                                            setLowPrice(e.target.value)
+                                                        }} id="" />
+                                                    <div className="flash">-</div>
+                                                    <input className="input-specific bg-slate-300 rounded-3xl
+         pl-4 pr-4 py-2 w-[25%] duration-200 ease-in
+           outline-none focus:border-none " type="text" name=""
+                                                        onChange={(e: any) => {
+                                                            setHighPrice(e.target.value)
+                                                        }}
+                                                        placeholder="99999" id="" />
+                                                    <button className="w-20" onClick={() => {
+                                                        setObjPrice({
+                                                            lowPrice: lowSpecificPrice,
+                                                            highPrice: highSpecificPrice
+                                                        })
+                                                    }}>Lọc</button>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div className="arrange flex gap-2 flex-col">
+                                                <div className="child-title text-[1.4rem] font-bold">
+                                                    <p>Xắp xếp</p>
+                                                </div>
+
+                                                <div className="rank-price">
+                                                    <select
+                                                        className="bg-slate-300 px-2 py-2 rounded-md outline-none"
+                                                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                                                            setIsLowHigh(parseInt(e.target.value) as PriceOrder);
+                                                        }}
+                                                        value={isLowHigh}
                                                     >
-                                                        <p>{price.isHigher ? "Trên" : "Dưới"}</p>
-                                                        <span>{
-                                                            (price.price / 1000) / 100 < 10 ?
-                                                                + (price.price / 1000) + "k"
-                                                                : (price.price / 1000000) + "tr"
-                                                        }</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <div className="child-title text-[1.4rem] font-bold">
-                                                <p>Giá cụ thể</p>
-                                            </div>
-                                            <div className="specific-price flex gap-2 items-center">
-                                                <input className="input-specific bg-slate-300 rounded-3xl
-         pl-4 pr-4 py-2 w-[25%] duration-200 ease-in
-          outline-none  focus:border-none " type="text" name="" placeholder="0" id="" />
-                                                <div className="flash">-</div>
-                                                <input className="input-specific bg-slate-300 rounded-3xl
-         pl-4 pr-4 py-2 w-[25%] duration-200 ease-in
-           outline-none focus:border-none " type="text" name="" placeholder="99999" id="" />
-                                            </div>
-
-                                            <div className="child-title text-[1.4rem] font-bold">
-                                                <p>Xắp xếp</p>
-                                            </div>
-
-                                            <div className="rank-price">
-                                                <select className="bg-slate-300 px-2 py-2 rounded-md outline-none ">
-                                                    <option>Giá thấp đến cao</option>
-                                                    <option>Giá cao đến thấp</option>
-                                                </select>
+                                                        <option value={PriceOrder.LowToHigh}>Giá thấp đến cao</option>
+                                                        <option value={PriceOrder.HighToLow}>Giá cao đến thấp</option>
+                                                        {/* <option value={PriceOrder.Random}>Ngẫu nhiên</option> */}
+                                                    </select>
+                                                </div>
                                             </div>
 
                                             <div className="child-title text-[1.4rem] font-bold">
                                                 <p>Cỡ</p>
                                             </div>
 
-                                            <div className="list-size flex flex-wrap w-[50%] gap-4">
+                                            <div className="list-size flex flex-wrap w-[50%] gap-2">
                                                 {listSize.map((size) => (
                                                     <SizeWidget
+                                                        onClick={(size, id, checked) => {
+                                                            if (checked) {
+                                                                setArrSize(arrItem => [...arrItem, size])
+                                                            }
+                                                            else {
+                                                                var newSizes = arrSize.filter((e) => {
+                                                                    return e !== size
+                                                                })
+                                                                setArrSize(newSizes)
+                                                            }
+
+                                                        }}
                                                         id={size.id}
                                                         isPick={size.isPick}
                                                         isMore={size.isMore}
@@ -272,6 +355,7 @@ const Shop: React.FC = () => {
                                                         active={e.enabled}
                                                         color={e.color}
                                                         onClick={(selected) => {
+                                                            setPickerColor(e.color)
                                                             setColors(() => changeSelected(e, colors, selected));
                                                         }}
                                                         tooltip={e.tooltip}
@@ -286,8 +370,15 @@ const Shop: React.FC = () => {
                         </div>
 
                     </div>
-                    <div className="shop-product  h-screen w-full">
-                        <h1>Product</h1>
+
+                    <div className="shop-product h-screen">
+                        <ProductComponentShop
+                            highLowPrice={objPrice}
+                            size={arrSize}
+                            color={pickerColor}
+                            LowToHigh={isLowHigh}
+                            priceFilter={priceFilter}
+                        ></ProductComponentShop>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../styles/styles.css";
 
 import React, { useEffect, useRef } from "react";
@@ -13,7 +13,7 @@ import PopupRegister from "../widget/popUpRegister";
 
 const Navbar: React.FC = () => {
 
-
+  const navigate = useNavigate()
   const [showCate, setShowCate] = React.useState(false);
   const transitions = useTransition(showCate, {
     from: { y: -16, opacity: 0, backgroundColor: "rgba(0, 0, 0, 0)" },
