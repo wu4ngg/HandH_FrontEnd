@@ -2,11 +2,9 @@
     bottom: 2rem !important;
     left: 6rem;
 }
-
-.home-image-banner img {
-    height: 108%;
+.home-banner{
+    height: calc(100vh - 10.2rem);
 }
-
 .home-banner-opacity {
     height: 108%;
 }

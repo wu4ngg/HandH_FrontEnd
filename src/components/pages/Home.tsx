@@ -9,17 +9,17 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ICategory, sampleCategories } from "../../types/category";
 import CategoryComponent from "../widget/categoryWidget";
 import Footer from "../widget/footer";
+import { isMobile } from 'react-device-detect';
 
 const Home: React.FC = () => {
   return (
     <div id="" className="home-page flex flex-col gap-8">
-      <div className="home-banner ">
-        <div className="home-banner-wrap flex relative">
-          <div className="home-image-banner ">
-            <img className="h-full" src="\src\assets\image\banner.png" alt="" />
-          </div>
-          <div className="home-banner-opacity bg-white opacity-45 absolute w-full "></div>
-          <div className="home-text-banner flex flex-col gap-8 absolute  ">
+      <div className="home-banner">
+        <div className="home-banner-wrap flex relative h-full">
+            <img className="h-full w-full object-cover" src="\src\assets\image\banner.png" alt="" />
+          
+          <div className="home-banner-opacity bg-white opacity-45 absolute w-full h-full"></div>
+          <div className="home-text-banner flex flex-col gap-8 absolute ">
             <div className="home-banner-text flex gap-2 flex-col">
               <div className="home-banner-text_bottom flex gap-4">
                 <p>SẢN PHẨM </p>
@@ -37,13 +37,13 @@ const Home: React.FC = () => {
                   value="Khám phá cửa hàng"
                 />
               </div>
-              <div className="banner-button_contact">
-                <input
+                <a
+                  href={isMobile ? `https://zalo.me/0909893395` : `https://chat.zalo.me/?phone=0909893395`}
                   type="button"
-                  className="bg-white px-6 py-4 rounded-full font-bold hover:opacity-50 hover:cursor-pointer duration-700 ease-linear"
-                  value="Liên hệ chúng tôi"
-                />
-              </div>
+                  className="bg-white px-6 py-4 rounded-full font-bold hover:opacity-50 hover:text-black hover:cursor-pointer duration-700 ease-linear text-black"
+                >
+                  Liên hệ chúng tôi
+                </a>
             </div>
           </div>
         </div>
