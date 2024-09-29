@@ -77,6 +77,8 @@
 
 #text-register {
     font-weight: bold;
+    color: #FFC64E;
+    cursor: pointer;
 }
 
 .bg-button-primary {
@@ -84,7 +86,7 @@
 }
 
 .bg-primary-grey {
-    background-color: #dddddd;
+    background-color: #F0F0F0;
 }
 
 .bg-search-field {
@@ -118,6 +120,26 @@
     /* Scale up to normal size */
 }
 
+.popup-admin{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20pt;
+    width: 60%;
+    text-align: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10pt;
+    z-index: 1000;
+    padding: 12pt;
+}
+
+
+
 .popup-login {
     position: fixed;
     top: 50%;
@@ -134,7 +156,9 @@
     gap: 10pt;
     z-index: 1000;
 }
-
+.text-black {
+    color: black;
+}
 .popup-register {
     position: fixed;
     top: 50%;
@@ -153,11 +177,18 @@
 }
 
 .popup-login input::placeholder {
-    padding-left: 10pt;
+    color: black;
 }
 
-.popup-register input::placeholder {
-    padding-left: 10pt;
+.popup-register input::placeholder{
+    color:black;
+}
+.popup-login input {
+    padding: 10pt; /* Thêm padding */
+}
+
+.popup-register input {
+    padding: 10pt;
 }
 
 .bottom-popup-login {
@@ -169,49 +200,135 @@
 .popup-login input {
     width: 85%;
     height: 30pt;
-    border-radius: 10pt;
+    border-top-left-radius: 10pt;
+    border-top-right-radius: 10pt;
+    border-bottom: 2px solid #C5C5C5; 
+    outline: none;
+
+
 }
 
 .popup-register input {
     width: 85%;
     height: 30pt;
-    border-radius: 10pt;
+    border-top-left-radius: 10pt;
+    border-top-right-radius: 10pt;
+    border-bottom: 2px solid #C5C5C5; 
+    outline: none;
+
 }
 
 .btn-continute {
     width: 85%;
     background-color: #ffecc4;
     font-weight: bold;
-
+    font-size: 15pt;
     border-radius: 20pt;
+    height: 30pt;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
-
-.btn-continute-with-google {
+.button-message{
     width: 85%;
-    background-color: #dddddd;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btn-message-v1{
+    background-color: #ffecc4;
+    font-weight: bold;
+    font-size: 15pt;
+    border-radius: 30pt;
+    height: 30pt;
+    padding: 0 60px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+
+.btn-message-v2{
+    background-color: #EDEDED;
+    font-weight: bold;
+    padding: 0 60px;
+    font-size: 15pt;
     border-radius: 20pt;
+    height: 30pt;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+.btn-admin{
+    width: 85%;
+    background-color: #ffecc4;
+    font-weight: bold;
+    font-size: 15pt;
+    border-radius: 20pt;
+    height: 30pt;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
 
-.btn-close {
-    text-align: end;
-    width: 100%;
-    padding: 10pt;
+.btn-admin-s2{
+    width: 85%;
+    background-color: #EDEDED;
+    font-weight: bold;
+    font-size: 15pt;
+    border-radius: 20pt;
+    height: 30pt;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 12pt;
 }
-
-.overlay {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-    position: fixed;
-}
-
 .btn-continute-re {
     width: 85%;
     background-color: #ffecc4;
     font-weight: bold;
     border-radius: 20pt;
+    font-size: 15pt;
+    height: 30pt;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
+
+.btn-continute-with-google {
+    width: 85%;
+    background-color: #F0F0F0;
+    border-radius: 20pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-continute-with-google img {
+    margin-right: 8px; 
+    height: 20px; 
+    width: auto;
+}
+
+.btn-close {
+    text-align: end;
+    width: 100%;
+    /* padding: 10pt; */
+    margin-top: 10pt;
+    margin-right: 15pt;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed; /* Ensure it's fixed to the viewport */
+    top: 0;          /* Start at the top */
+    left: 0;         /* Start at the left */
+    width: 100vw;    /* Cover the entire width */
+    height: 100vh;   /* Cover the entire height */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+
+
 
 .bottom-register {
     width: 100%;
@@ -230,8 +347,14 @@
     margin: 8px;
 }
 
+.or-text{
+    font-size: 15pt;
+}
 .product_item {
     max-width: calc(25% - 16px);
     box-sizing: border-box;
 }
-  
+
+.error-icon {
+    color:#FFC989;
+  }
