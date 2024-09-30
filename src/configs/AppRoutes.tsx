@@ -15,6 +15,8 @@ import Delivering from "../components/cpn_history/Delivering";
 import Delivered from "../components/cpn_history/Delivered";
 import Received from "../components/cpn_history/Received";
 import Canceled from "../components/cpn_history/Canceled";
+import Product from "../components/pages/Product";
+import CartPage from "../components/pages/Cart";
 
 const AppRoutes: React.FC = () => {
     return (
@@ -39,6 +41,8 @@ const AppRoutes: React.FC = () => {
                 <Route path="favoriteProduct" element={<FavoriteProduct></FavoriteProduct>} />
             </Route>
 
+            <Route path='/product/:id/:name' element={<Product></Product>}></Route>
+            <Route path='/cart' element={<CartPage></CartPage>}></Route>
         </Routes>
     )
 }
