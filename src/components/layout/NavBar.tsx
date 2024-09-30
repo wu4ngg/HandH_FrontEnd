@@ -3,9 +3,9 @@ import "../../styles/styles.css";
 
 import React, { useEffect, useRef } from "react";
 import HeaderComponentSearch from "../widget/headerComponentSearch";
-import {
-    Menu,Badge
-} from "@mui/icons-material";
+// import {
+//     Menu,Badge
+// } from "@mui/icons-material";
 import { Menu, Close } from "@mui/icons-material";
 import { useSpring, animated, useTransition } from "react-spring";
 import { ICategory, sampleCategories } from "../../types/category";
@@ -15,8 +15,7 @@ import PopupRegister from "../widget/popUpRegister";
 // import { duration } from "@mui/material";
 
 const Navbar: React.FC = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [showCate, setShowCate] = React.useState(false);
   const transitions = useTransition(showCate, {
     from: { y: -16, opacity: 0, backgroundColor: "rgba(0, 0, 0, 0)" },
@@ -28,7 +27,6 @@ const Navbar: React.FC = () => {
     },
   });
 
-
   const [login, setLogin] = React.useState(false);
   const [register, setRegister] = React.useState(false);
 
@@ -39,20 +37,13 @@ const Navbar: React.FC = () => {
     setRegister(false);
   }
 
-
-
-
-                    <NavLink
-                        to="/managerAccount"
-                        className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
-                    >
-                        Xin chào, User!
-                    </NavLink>
-                </div>
-
+  // </div>
 
   return (
-    <nav id="nav-main" className=" bg-white fixed w-full top-0 z-10 rounded-b-3xl shadow-md">
+    <nav
+      id="nav-main"
+      className=" bg-white fixed w-full top-0 z-10 rounded-b-3xl shadow-md"
+    >
       <div className="flex mx-auto px-20 py-4 justify-between items-center">
         <div className="flex justify-start gap-4">
           <div className="flex-shrink-0 flex items-center">
@@ -133,6 +124,12 @@ const Navbar: React.FC = () => {
           )}
 
           <div className="flex gap-6">
+            <NavLink
+              to="/managerAccount"
+              className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
+            >
+              Xin chào, User!
+            </NavLink>
             <div>
               <input
                 onClick={() => setLogin(!login)}
@@ -152,10 +149,10 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
-      {login && (
-        <PopupComponent handleChange={handleChange}></PopupComponent>
+      {login && <PopupComponent handleChange={handleChange}></PopupComponent>}
+      {register && (
+        <PopupRegister handleChange={handleChangeRe}></PopupRegister>
       )}
-      {register && (<PopupRegister handleChange={handleChangeRe}></PopupRegister>)}
       {transitions(
         (style, isOpen) =>
           isOpen && (

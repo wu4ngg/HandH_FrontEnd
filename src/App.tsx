@@ -10,20 +10,20 @@ import Footer from "./components/widget/footer";
 const App = () => {
   const [imageViewerValue, setImageViewValue] = useState({
     isOpen: false,
-    images: [''],
+    images: [""],
     currentIndex: 0,
   });
   return (
     <Router>
-      <div className='flex flex-col min-h-screen w-full'>
+      <div className="flex flex-col min-h-screen w-full">
         <Navbar></Navbar>
-<!-- <<<<<<< tuan
+        {/* <!-- <<<<<<< tuan
         <main className='flex-grow flex mt-12'>
-======= -->
+======= --> */}
         <ImageModelContext.Provider
           value={{
             value: imageViewerValue,
-            setImageModelContext: setImageViewValue
+            setImageModelContext: setImageViewValue,
           }}
         >
           <ImageViewer />
