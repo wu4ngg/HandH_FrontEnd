@@ -1,5 +1,12 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Navbar from "../components/layout/NavBar";
+import SideBar from "../components/layout/SideBar"; // Chỉ sử dụng cho Admin
+import Dashboard from "../page/Dashboard";
+import ProductPage from "../page/ProductPage";
+import OrderPage from "../page/OrderPage";
+import CustomerPage from "../page/CustomerPage";
+import FinancePage from "../page/FinancePage"; // Đã sửa lỗi chính tả
 import Home from "../components/pages/Home";
 import Shop from "../components/pages/Shop";
 import PurchaseOrder from "../components/pages/PurchaseOrder";
@@ -18,34 +25,63 @@ import Canceled from "../components/cpn_history/Canceled";
 import Product from "../components/pages/Product";
 import CartPage from "../components/pages/Cart";
 
-const AppRoutes: React.FC = () => {
-    return (
+const AdminRoute: React.FC = () => {
+  return (
+    <div className="wrap-route flex">
+      <SideBar />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/products" element={<ProductPage />} />
+        <Route path="/orders" element={<OrderPage />} />
+        <Route path="/customers" element={<CustomerPage />} />
+        <Route path="/finance" element={<FinancePage />} />
+      </Routes>
+    </div>
+  );
+};
+
+const UserRoute: React.FC = () => {
+  return (
+    <Routes>
+      <Navbar /> {/* Navbar sẽ hiển thị cho tất cả người dùng */}
+      <main className="flex-grow flex mt-[10.2rem]">
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/purchaseOrder" element={<PurchaseOrder />} />
+        <Route path="/management" element={<Management />} />
+        <Route path="/managerAccount" element={<ManagerAccount />}>
+          <Route index element={<Account />} />
+          <Route path="account" element={<Account />} />
+          <Route path="paymentHistory" element={<PaymentHistory />}>
+            <Route index element={<AllHis />} />
+            <Route path="allHis" element={<AllHis />} />
+            <Route path="preparingOrder" element={<PreparingOrder />} />
+            <Route path="waitingForPayment" element={<WaitingForPayment />} />
+            <Route path="delivering" element={<Delivering />} />
+            <Route path="delivered" element={<Delivered />} />
+            <Route path="received" element={<Received />} />
+            <Route path="canceled" element={<Canceled />} />
+          </Route>
+          <Route path="favoriteProduct" element={<FavoriteProduct />} />
+        </Route>
+        <Route path="/product/:id/:name" element={<Product />} />
+        <Route path="/cart" element={<CartPage />} />
+      </main>
+    </Routes>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <div className="flex flex-col min-h-screen w-full">
         <Routes>
-            <Route path='/' element={<Home></Home>}></Route>
-            <Route path='/shop' element={<Shop></Shop>}></Route>
-            <Route path='/purchaseOrder' element={<PurchaseOrder></PurchaseOrder>}></Route>
-            <Route path='/management' element={<Management></Management>}></Route>
-            <Route path="/managerAccount" element={<ManagerAccount></ManagerAccount>}>
-                <Route index element={<Account />} />
-                <Route path="account" element={<Account></Account>} />
-                <Route path="paymentHistory" element={<PaymentHistory/>}>
-                    <Route index element={<AllHis />} />
-                    <Route path='allHis' element={<AllHis />} />
-                    <Route path='preparingOrder' element={<PreparingOrder />} />
-                    <Route path='waitingForPayment' element={<WaitingForPayment />} />
-                    <Route path='delivering' element={<Delivering />} />
-                    <Route path='delivered' element={<Delivered />} />
-                    <Route path='received' element={<Received />} />
-                    <Route path='canceled' element={<Canceled />} />
-                </Route>
-                <Route path="favoriteProduct" element={<FavoriteProduct></FavoriteProduct>} />
-            </Route>
-
-            <Route path='/product/:id/:name' element={<Product></Product>}></Route>
-            <Route path='/cart' element={<CartPage></CartPage>}></Route>
+          <Route path="/*" element={<UserRoute />} />{" "}
+          <Route path="/admin/*" element={<AdminRoute />} />{" "}
         </Routes>
-    )
-}
+      </div>
+    </Router>
+  );
+};
 
-
-export default AppRoutes
+export default App;
