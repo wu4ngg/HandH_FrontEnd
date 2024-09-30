@@ -17,6 +17,9 @@ const App = () => {
     <Router>
       <div className='flex flex-col min-h-screen w-full'>
         <Navbar></Navbar>
+<!-- <<<<<<< tuan
+        <main className='flex-grow flex mt-12'>
+======= -->
         <ImageModelContext.Provider
           value={{
             value: imageViewerValue,

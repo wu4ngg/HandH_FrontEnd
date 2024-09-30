@@ -3,6 +3,9 @@ import "../../styles/styles.css";
 
 import React, { useEffect, useRef } from "react";
 import HeaderComponentSearch from "../widget/headerComponentSearch";
+import {
+    Menu,Badge
+} from "@mui/icons-material";
 import { Menu, Close } from "@mui/icons-material";
 import { useSpring, animated, useTransition } from "react-spring";
 import { ICategory, sampleCategories } from "../../types/category";
@@ -37,6 +40,15 @@ const Navbar: React.FC = () => {
   }
 
 
+
+
+                    <NavLink
+                        to="/managerAccount"
+                        className="text-title-nav hover:underline hover:text-black hover:bg-gray-100 transition-all duration-800 px-3 py-2 rounded-md font-medium"
+                    >
+                        Xin chào, User!
+                    </NavLink>
+                </div>
 
 
   return (
