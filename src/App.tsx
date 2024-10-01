@@ -40,9 +40,7 @@ const AdminRoute: React.FC = () => {
     </div>
   );
 };
-interface UserRouteProps {
-  navbar: ReactNode;
-}
+
 const UserRoute: React.FC = () => {
   return (
     <div className="flex-grow flex mt-[10.2rem]">
@@ -78,14 +76,11 @@ const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen w-full">
-        {/* <main className="flex-grow flex mt-[10.2rem]"> */}
         <Routes>
-          <Route path="/*" element={<UserRoute />} />{" "}
           {/* Routes cho người dùng */}
+          <Route path="/*" element={<UserRoute />} /> {/* Routes cho admin */}
           <Route path="/admin/*" element={<AdminRoute />} />{" "}
-          {/* Routes cho admin */}
         </Routes>
-        {/* </main> */}
       </div>
     </Router>
   );
